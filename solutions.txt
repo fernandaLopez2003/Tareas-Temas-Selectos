@@ -1,0 +1,63 @@
+#######################################################################################################################################
+# Teoría
+
+1. 
+b)
+-------------------------------------------------------------------------------------------------------
+
+2. 
+a)
+-------------------------------------------------------------------------------------------------------
+
+3. 
+En la primera forma normal se eliminan los grupos repetidos de las tablas individuales, creando campos separados para no repetir o duplicar datos.
+-------------------------------------------------------------------------------------------------------
+4. 
+Ambos comandos WHERE y HAVING se utilizan para filtrar las filas de datos que cumplan con cierta condición. 
+Pero WHERE normalmente se ocupa previo a un GROUP BY para filtrar antes de agrupar los datos y HAVING se utiliza después de un GROUP BY
+--------------------------------------------------------------------------------------------------------
+5.
+c)
+--------------------------------------------------------------------------------------------------------
+##################################################################################################################################
+# Práctica
+
+1.
+```SQL
+-- poner solución debajo de este mensaje
+SELECT  nombre_materia, AVG(calificacion) AS calif_promedio
+FROM calificaciones
+WHERE  calificacion IS NOT NULL
+GROUP BY nombre_materia
+ORDER BY calif_promedio DESC;
+```
+2.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT DISTINCT al.nombre, al.apellido 
+FROM alumnos AS al
+INNER JOIN 
+calificaciones AS cali
+ON al.expediente = cali.expediente
+WHERE cali.calificacion IS NOT NULL
+ORDER BY al.apellido;```
+
+3.
+
+```SQL
+-- poner solución debajo de este mensaje
+SELECT al.nombre, al.apellido, cali.nombre_materia, MAX(cali.calificacion) AS max_cal
+FROM alumnos AS al
+ LEFT JOIN 
+calificaciones AS cali
+ON al.expediente=cali.expediente
+WHERE cali.calificacion IS NOT NULL
+GROUP BY al.nombre, al. apellido;
+
+
+
+
+
+
